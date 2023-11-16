@@ -1,45 +1,45 @@
-import React from 'react'
-import './TicTacToe.css'
+import React from "react";
+import "./TicTacToe.css";
 const TicTacToe = () => {
-  const [board, setBoard] = React.useState(Array(9).fill(""))
-  const [data, setData] = React.useState('x')
+  const [board, setBoard] = React.useState(Array(9).fill(""));
+  const [data, setData] = React.useState("x");
   const click_box = (e) => {
-    let box = [...board]
+    let box = [...board];
     if (board[e] !== "") {
-      alert("already clicked")
-      return
+      alert("already clicked");
+      return;
     }
-    box[e] = data
-    setBoard(box)
+    box[e] = data;
+    setBoard(box);
     if (data === "x") {
-      setData("o")
+      setData("o");
     } else {
-      setData("x")
+      setData("x");
     }
     if (winner(box)) {
-      box.fill("")
-      setBoard(box)
-      alert("winner")
+      box.fill("");
+      setBoard(box);
+      alert("winner");
     }
     if (draw(box)) {
-      alert("Match draw")
-      box.fill("")
-      setBoard(box)
+      alert("Match draw");
+      box.fill("");
+      setBoard(box);
     }
-  }
+  };
   const draw = (board) => {
-    let x = 0
-    board.forEach(element => {
+    let x = 0;
+    board.forEach((element) => {
       if (element !== "") {
-        x++
+        x++;
       }
-    })
+    });
     if (x >= 9) {
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
-  }
+  };
   const winner = (board) => {
     const conditions = [
       [0, 1, 2],
@@ -49,24 +49,22 @@ const TicTacToe = () => {
       [1, 4, 7],
       [2, 5, 8],
       [0, 4, 8],
-      [2, 4, 6]
-    ]
-    let flag = false
-    conditions.forEach(el => {
+      [2, 4, 6],
+    ];
+    let flag = false;
+    conditions.forEach((el) => {
       if (board[el[0]] !== "" && board[el[1]] !== "" && board[el[2]] !== "") {
         if (board[el[0]] === board[el[1]] && board[el[1]] === board[el[2]]) {
           flag = true;
         }
       }
-    })
-    return flag
-  }
-
-
+    });
+    return flag;
+  };
 
   return (
     <div>
-      <h1 className='heading'>Tic Tac Toe</h1>
+      <h1 className="heading">Tic - Tac - Toe</h1>
       <div className="table">
         <table>
           <tbody>
@@ -89,7 +87,7 @@ const TicTacToe = () => {
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TicTacToe
+export default TicTacToe;
